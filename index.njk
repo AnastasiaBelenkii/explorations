@@ -1,0 +1,17 @@
+---
+layout: base.njk
+title: Explorations
+---
+
+<h1>Explorations</h1>
+
+<ol class="post-list">
+  {% for post in collections.posts %}
+    <li class="post-list__item">
+      <a class="post-list__link" href="{{ post.url }}">
+        <span class="post-list__title">{{ post.data.title }}</span>
+        <time class="post-list__date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+      </a>
+    </li>
+  {% endfor %}
+</ol>

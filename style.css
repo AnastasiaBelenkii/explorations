@@ -1,0 +1,152 @@
+@import "/fontsource/newsreader/index.css";
+@import "/fontsource/fraunces/600.css";
+
+:root {
+  --s1: 0.5rem;
+  --s2: 1rem;
+  --s3: 1.5rem;
+  --s4: 2.5rem;
+  --s5: 4rem;
+  --text: #1a1a1a;
+  --muted: #706f6a;
+  --rule: #e6e2da;
+  --link: #3f3d38;
+  --background: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+  color: var(--text);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+}
+
+.shell {
+  max-width: 68ch;
+  margin: 0 auto;
+  padding: var(--s4);
+}
+
+.breadcrumb {
+  border-bottom: 1px solid var(--rule);
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  gap: var(--s1);
+  letter-spacing: 0.08em;
+  margin: 0;
+  padding: 0 0 var(--s2);
+}
+
+main {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: var(--s5) 0 var(--s2);
+}
+
+h1 {
+  font-size: 2.35rem;
+  letter-spacing: -0.015em;
+}
+
+h2 {
+  font-size: 1.45rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+p {
+  margin: 0 0 var(--s3);
+}
+
+a {
+  color: var(--link);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover,
+a:focus {
+  color: var(--text);
+}
+
+.kicker {
+  color: var(--muted);
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--s2);
+  text-transform: uppercase;
+}
+
+.post > :last-child {
+  margin-bottom: 0;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  list-style: none;
+  margin: var(--s4) 0 0;
+  padding: 0;
+}
+
+.post-list__item {
+  margin: 0;
+  padding: 0;
+}
+
+.post-list__link {
+  display: block;
+  text-decoration: none;
+}
+
+.post-list__link:hover .post-list__title,
+.post-list__link:focus .post-list__title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.post-list__title {
+  color: var(--text);
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 var(--s1);
+}
+
+.post-list__date {
+  color: var(--muted);
+  display: block;
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

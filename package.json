@@ -1,0 +1,14 @@
+{
+  "name": "explorations",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "serve": "npx @11ty/eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@fontsource/fraunces": "^5.2.8",
+    "@fontsource/newsreader": "^5.2.8"
+  }
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}{% if title != "Explorations" %} | Explorations{% endif %}</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <div class="shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        {% if page.url == "/" %}
+          <span>Explorations</span>
+        {% else %}
+          <a href="/">Explorations</a>
+          <span aria-hidden="true">/</span>
+          <span>{{ title }}</span>
+        {% endif %}
+      </nav>
+
+      <main>
+        {% if page.url == "/" %}
+          {{ content | safe }}
+        {% else %}
+          <article class="post">
+            <h1>{{ title }}</h1>
+            {{ content | safe }}
+          </article>
+        {% endif %}
+      </main>
+    </div>
+  </body>
+</html>
