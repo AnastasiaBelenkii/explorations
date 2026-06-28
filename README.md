@@ -15,15 +15,16 @@ The Eleventy output directory is `_site`.
 
 Use these settings when configuring Cloudflare Pages:
 
-- Project name: `explorations`
+- Project name: `jacobbelenkii`
 - Production branch: `main`
 - Build command: `npx @11ty/eleventy`
 - Build output directory: `_site`
+- Pages URL: `https://jacobbelenkii.pages.dev`
 
 Manual Wrangler deploy:
 
 ```sh
 npm install
 npm run build
-npx wrangler@latest pages deploy _site --project-name=explorations
+npx wrangler@latest pages deploy _site --project-name=jacobbelenkii
 ```
