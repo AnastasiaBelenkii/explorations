@@ -3,6 +3,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "base.njk");
 
   eleventyConfig.addPassthroughCopy("style.css");
+  eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy({
     "node_modules/@fontsource/newsreader": "fontsource/newsreader",
     "node_modules/@fontsource/fraunces": "fontsource/fraunces"

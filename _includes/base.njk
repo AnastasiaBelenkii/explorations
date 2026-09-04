@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }}{% if title != "Explorations" %} | Explorations{% endif %}</title>
+    {% if description %}<meta name="description" content="{{ description | escape }}">{% endif %}
     <link rel="stylesheet" href="/style.css">
   </head>
-  <body>
+  <body{% if bodyClass %} class="{{ bodyClass | escape }}"{% endif %}>
     <div class="shell">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         {% if page.url == "/" %}

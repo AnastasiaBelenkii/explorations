@@ -150,3 +150,52 @@ a:focus {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+/* Reading support for the research report; preserve the existing blog theme. */
+.research-post .shell { max-width: 88ch; padding: clamp(1.25rem, 5vw, 4rem); }
+.research-post .post { overflow-wrap: break-word; }
+.research-post .post-meta,
+.research-post figcaption,
+.research-post .table-caption {
+  color: var(--muted);
+  font-family: system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.research-post .subtitle { font-size: 1.15rem; line-height: 1.4; }
+.research-post .publication-note {
+  border-left: 2px solid var(--rule);
+  margin: var(--s3) 0 var(--s4);
+  padding-left: var(--s3);
+}
+.research-post figure { margin: var(--s4) 0; }
+.research-post figure img {
+  display: block; height: auto; margin: 0 auto var(--s2); max-width: 100%;
+}
+.research-post .table-scroll { margin: var(--s3) 0 var(--s1); overflow-x: auto; }
+.research-post table {
+  border-collapse: collapse;
+  font-family: system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  width: 100%;
+}
+.research-post th,
+.research-post td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.research-post th { color: var(--text); font-weight: 600; }
+.research-post .numeric-table td:not(:first-child),
+.research-post .numeric-table th:not(:first-child) { white-space: nowrap; }
+.research-post .table-scroll:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.research-post .equation { margin: var(--s3) 0; overflow-x: auto; padding: var(--s1) 0; text-align: center; }
+.research-post .equation > span { display: block; min-width: max-content; }
+.research-post code { font-size: 0.82em; overflow-wrap: anywhere; }
+.research-post .references { font-size: 0.9rem; overflow-wrap: anywhere; padding-left: 1.5rem; }
+.research-post .references li { margin-bottom: var(--s2); }
+.research-post h2,
+.research-post h3,
+.research-post .references li { scroll-margin-top: var(--s3); }
