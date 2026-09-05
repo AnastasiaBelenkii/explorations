@@ -9,7 +9,7 @@ homeExcerptMore: "I built a compiler-guided proof-search harness around Qwen 3.5
 ---
 
 <aside class="publication-note">
-<p>This is my submitted research engineering take-home. Peer review is underway, and I plan to extend the experiments.</p>
+<p>I completed this project as part of the take-home stage of an application process. I plan to revise and extend it as I get feedback.</p>
 <p><a href="/assets/lean-proof-search/writeup_final.pdf">Download the original report (PDF)</a></p>
 </aside>
 
