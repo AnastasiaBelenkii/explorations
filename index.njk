@@ -1,17 +1,39 @@
 ---
 layout: base.njk
-title: Explorations
+title: Jacob Belenkii
+description: "Writing and research by Jacob Belenkii."
 ---
-
-<h1>Explorations</h1>
-
-<ol class="post-list">
-  {% for post in collections.posts %}
-    <li class="post-list__item">
-      <a class="post-list__link" href="{{ post.url }}">
-        <span class="post-list__title">{{ post.data.title }}</span>
-        <time class="post-list__date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-      </a>
-    </li>
-  {% endfor %}
-</ol>
+{% set latest = collections.posts[0] %}
+{% if latest %}
+  <article class="latest">
+    <div class="eyebrow">Latest · <time datetime="{{ latest.date | htmlDateString }}">{{ latest.date | readableDate }}</time></div>
+    <h1><a href="{{ latest.url }}">{{ latest.data.title }}</a></h1>
+    {% if latest.data.homeExcerpt %}
+      <p>{{ latest.data.homeExcerpt }}</p>
+      {% if latest.data.homeExcerptMore %}<p>{{ latest.data.homeExcerptMore }}</p>{% endif %}
+    {% else %}
+      {{ latest.templateContent | postExcerpt | safe }}
+    {% endif %}
+    <a class="continue-link" href="{{ latest.url }}">Continue reading <span aria-hidden="true">→</span></a>
+  </article>
+{% endif %}
+{% if collections.posts.length > 1 %}
+  <section class="earlier" aria-labelledby="earlier-title">
+    <h2 id="earlier-title">Earlier</h2>
+    <ol class="post-list">
+      {% for post in collections.posts %}
+        {% if not loop.first %}
+          <li>
+            <a class="archive-link raised" href="{{ post.url }}">
+              <span>
+                <span class="archive-title">{{ post.data.title }}</span>
+                <span class="archive-meta"><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> · About {{ post.templateContent | readingMinutes }} min read</span>
+              </span>
+              <span class="archive-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  </section>
+{% endif %}

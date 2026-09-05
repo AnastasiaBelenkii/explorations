@@ -3,29 +3,46 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }}{% if title != "Explorations" %} | Explorations{% endif %}</title>
+    <meta name="color-scheme" content="light dark">
+    <title>{% if page.url == '/' %}Jacob Belenkii{% else %}{{ title }} | Jacob Belenkii{% endif %}</title>
     {% if description %}<meta name="description" content="{{ description | escape }}">{% endif %}
+    <link rel="canonical" href="https://jacobbelenkii.pages.dev{{ page.url }}">
+    <script>try{var blogTheme=localStorage.getItem('blog-theme');if(blogTheme==='light'||blogTheme==='dark')document.documentElement.dataset.theme=blogTheme;}catch(e){}</script>
+    <link rel="preload" href="/fonts/ysabeau-light.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/inter-light.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/style.css">
+    <script src="/site.js" defer></script>
   </head>
-  <body{% if bodyClass %} class="{{ bodyClass | escape }}"{% endif %}>
+  <body class="{% if page.url == '/' %}home-route{% else %}article-route{% endif %}{% if bodyClass %} {{ bodyClass | escape }}{% endif %}">
+    <a class="skip-link" href="#main">Skip to content</a>
     <div class="shell">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        {% if page.url == "/" %}
-          <span>Explorations</span>
-        {% else %}
-          <a href="/">Explorations</a>
-          <span aria-hidden="true">/</span>
-          <span>{{ title }}</span>
-        {% endif %}
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="site-name" href="/"{% if page.url == '/' %} aria-current="page"{% endif %}>Jacob Belenkii</a>
+        <button class="theme-toggle" type="button" hidden>Theme: system</button>
       </nav>
-
-      <main>
-        {% if page.url == "/" %}
+      <main id="main">
+        {% if page.url == '/' %}
           {{ content | safe }}
         {% else %}
+          {% set articleHtml = content | withHeadingIds %}
+          {% set toc = articleHtml | tableOfContents %}
           <article class="post">
-            <h1>{{ title }}</h1>
-            {{ content | safe }}
+            <header class="post-header">
+              <h1>{{ title }}</h1>
+              {% if subtitle %}<p class="subtitle">{{ subtitle }}</p>{% endif %}
+              <p class="post-meta">Jacob Belenkii · <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> · About {{ content | readingMinutes }} min read</p>
+            </header>
+            <div class="article-layout{% if not toc %} without-contents{% endif %}">
+              {% if toc %}
+                <aside class="contents-rail" aria-label="Article contents">
+                  <details class="contents raised" open>
+                    <summary>Contents</summary>
+                    <nav aria-label="Contents">{{ toc | safe }}</nav>
+                  </details>
+                </aside>
+              {% endif %}
+              <div class="prose">{{ articleHtml | safe }}</div>
+            </div>
           </article>
         {% endif %}
       </main>

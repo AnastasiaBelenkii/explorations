@@ -3,10 +3,10 @@ title: "When Does Collaboration Help in Lean Proof Search?"
 date: 2026-09-04
 description: "Coverage gains without a measurable benefit from partial-proof exchange: experiments with Qwen 3.5 Flash and GPT-OSS 120B in Lean."
 bodyClass: research-post
+subtitle: "Coverage gains without a measurable benefit from partial-proof exchange"
+homeExcerpt: "When two language models work on the same Lean theorem, they can help in two different ways. They can provide coverage, by trying different searches and succeeding on different problems, or transfer, by sending information that makes the other search more likely to succeed."
+homeExcerptMore: "I built a compiler-guided proof-search harness around Qwen 3.5 Flash and GPT-OSS 120B and evaluated both mechanisms. Each model repeatedly proposed and repaired a Lean proof using compiler feedback."
 ---
-
-<p class="subtitle">Coverage gains without a measurable benefit from partial-proof exchange</p>
-<p class="post-meta">Jacob Belenkii · <time datetime="2026-09-04">September 4, 2026</time></p>
 
 <aside class="publication-note">
 <p>This is my submitted research engineering take-home. Peer review is underway, and I plan to extend the experiments.</p>
@@ -238,6 +238,10 @@ Second, communication helps only when the information changes the receiver's tra
 Third, system throughput is part of the scientific answer. The slower model completed fewer calls, so a nominally symmetric two-track design did not provide equal search. On the Qwen-hard replication set, GPT-OSS had unique successes, but two Qwen tracks completed more calls and achieved the highest observed pass rate.
 
 The scope is narrow. The study uses two fixed models, Lean 4 competition problems, one repair-loop family, and four closely related partial-proof formats. The replication problems were selected using Qwen and are not representative of miniF2F as a whole. Provider sampling was nondeterministic, the number of repeated problems was small, and calls were not matched for tokens, dollars, or latency. The results therefore support a design recommendation, not a universal law: before building elaborate interaction, compare against both a silent mixed-model portfolio and a same-model repeated-search control, measure the calls that actually finish, and use targeted replay to test whether messages change the receiver at all.
+
+## Acknowledgments
+
+Thank you to Nikhil Maturi and Daniel Benavides for their thoughtful feedback and invaluable suggestions throughout this project.
 
 ## References
 
